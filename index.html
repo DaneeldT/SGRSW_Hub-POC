@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/tokens/colors.css">
+<link rel="stylesheet" href="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/tokens/typography.css">
+<link rel="stylesheet" href="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/tokens/border.css">
+<link rel="stylesheet" href="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/tokens/motion.css">
+<link rel="stylesheet" href="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/tokens/base.css">
+<link rel="stylesheet" href="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/styles.css">
+<script src="_ds/sgrsw-design-system-1b8ebd6b-c648-4a89-8a57-5b62a5789509/_ds_bundle.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: var(--surface-page); }
+  a { color: var(--text-link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--text-link-hover); text-decoration-thickness: 2px; }
+  * { box-sizing: border-box; }
+</style>
+</helmet>
+<div style="min-height: 100vh; background: var(--surface-page); font: var(--type-body); color: var(--text-body); display: flex; flex-direction: column;">
+
+  <div style="position: sticky; top: 0; z-index: 20;">
+  <header style="background: var(--surface-inverse); border-bottom: var(--border-width-hairline) solid var(--border-inverse);">
+    <div style="max-width: 1120px; margin: 0 auto; padding: var(--space-3) var(--gutter-page); display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;">
+      <a href="#home" style="display: flex; align-items: center; gap: var(--space-4); text-decoration: none;">
+        <span style="display: block; background: var(--cream-50); border-radius: var(--radius-sm); padding: 4px 6px; line-height: 0;">
+          <img src="assets/sgrsw-logo.png" alt="SGRSW" style="display: block; height: 40px; width: auto;">
+        </span>
+        <span style="display: block;">
+          <span style="display: block; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse-muted);">City of Cape Town · Urban Mobility</span>
+          <span style="display: block; font: var(--weight-medium) var(--text-md)/1.3 var(--font-display); letter-spacing: var(--tracking-wide); color: var(--text-inverse); margin-top: 3px;">Standards and Guidelines for Roads &amp; Stormwater</span>
+        </span>
+      </a>
+      <span style="flex: 1; min-width: var(--space-4);"></span>
+      <span style="display: block; text-align: right;">
+        <span style="display: block; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse-muted);">Latest version</span>
+        <span style="display: block; font: var(--type-mono); color: var(--text-inverse); margin-top: 3px;">Version 4.0 · September 2024</span>
+      </span>
+    </div>
+  </header>
+
+  <div style="background: var(--teal-800); border-top: var(--border-width-hairline) solid var(--border-inverse);">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter-page);">
+      <div role="tablist" style="display: flex; flex-wrap: wrap; gap: var(--space-6);">
+        <sc-for list="{{ tabItems }}" as="t" hint-placeholder-count="6">
+          <button type="button" role="tab" onClick="{{ t.select }}" style="{{ t.style }}">
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ t.icon }}" size="{{ 15 }}" hint-size="15px,15px"></x-import>
+            {{ t.label }}
+          </button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <main style="flex: 1; max-width: 1120px; width: 100%; margin: 0 auto; padding: var(--space-12) var(--gutter-page) var(--space-20);">
+
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="Home">
+        <div style="border-top: var(--border-width-rule) solid var(--rule-heading); padding-top: var(--space-6); max-width: var(--measure-body);">
+          <p style="margin: 0; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-clause);">Standards and Guidelines</p>
+          <h1 style="margin: var(--space-3) 0 0; font: var(--type-chapter-title); letter-spacing: var(--tracking-wide); color: var(--text-heading);">SGRSW</h1>
+          <p style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--ink-900);">Standards and Guidelines for Roads &amp; Stormwater</p>
+          <p style="margin: var(--stack-paragraph) 0 0; color: var(--text-body);">This site provides links to download the SGRSW document, the detail drawings, the reference maps and the annexures. The full document content is not hosted here.</p>
+        </div>
+
+        <div style="margin-top: var(--space-8); max-width: 820px;">
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.DocumentMeta" entries="{{ homeMeta }}" hint-size="100%,80px"></x-import>
+        </div>
+
+        <div style="margin-top: var(--stack-section); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-5);">
+          <a href="#downloads" style="text-decoration: none; display: block;">
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" interactive="{{ true }}" hint-size="100%,150px" style="height: 100%;">
+              <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+                <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="download" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+                <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Tab 02</span>
+              </span>
+              <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Downloads</h2>
+              <p style="margin: var(--space-2) 0 0; font: var(--type-body-sm); color: var(--text-body);">The document, change logs, annexures, subscription and SharePoint access.</p>
+            </x-import>
+          </a>
+          <a href="#drawings" style="text-decoration: none; display: block;">
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" interactive="{{ true }}" hint-size="100%,150px" style="height: 100%;">
+              <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+                <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="ruler" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+                <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Tab 03</span>
+              </span>
+              <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Drawing Library</h2>
+              <p style="margin: var(--space-2) 0 0; font: var(--type-body-sm); color: var(--text-body);">Standard detail drawings from Part B, Book of Drawings.</p>
+            </x-import>
+          </a>
+          <a href="#maps-library" style="text-decoration: none; display: block;">
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" interactive="{{ true }}" hint-size="100%,150px" style="height: 100%;">
+              <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+                <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="map" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+                <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Tab 04</span>
+              </span>
+              <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Maps Library</h2>
+              <p style="margin: var(--space-2) 0 0; font: var(--type-body-sm); color: var(--text-body);">Reference maps from Part C, including the RIM Districts Map.</p>
+            </x-import>
+          </a>
+          <a href="#as-built" style="text-decoration: none; display: block;">
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" interactive="{{ true }}" hint-size="100%,150px" style="height: 100%;">
+              <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+                <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="gavel" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+                <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Tab 05</span>
+              </span>
+              <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">As-built Requirements</h2>
+              <p style="margin: var(--space-2) 0 0; font: var(--type-body-sm); color: var(--text-body);">Close-out information required on completion of the contract.</p>
+            </x-import>
+          </a>
+        </div>
+
+        <div style="margin-top: var(--stack-section); max-width: 640px;">
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="raised" accent="{{ true }}" hint-size="100%,180px">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="external-link" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Prototype</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">SGRSW Viewer</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">Need the SGRSW on the go? Access the web app below.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="primary" icon-right="external-link" href="https://daneeldt.github.io/sgrsw_viewer-/" hint-size="auto,40px">Open the SGRSW Viewer</x-import>
+          </x-import>
+        </div>
+
+        <div style="margin-top: var(--stack-section); max-width: var(--measure-body);">
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Callout" tone="note" hint-size="100%,90px">It is the responsibility of the designers to confirm that they are utilising the latest available version of this document.</x-import>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isDownloads }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="Downloads">
+        <div style="border-top: var(--border-width-rule) solid var(--rule-heading); padding-top: var(--space-6); max-width: var(--measure-body);">
+          <p style="margin: 0; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-clause);">Tab 02</p>
+          <h1 style="margin: var(--space-2) 0 0; font: var(--type-h1); letter-spacing: var(--tracking-wide); color: var(--text-heading);">Downloads</h1>
+          <p style="margin: var(--stack-paragraph) 0 0;">Links to the SGRSW document, the SGRSW SharePoint site and the bulk downloads for the change logs, the Part C maps and the Part D annexures.</p>
+        </div>
+
+        <div style="margin-top: var(--space-10); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-5);">
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="raised" accent="{{ true }}" hint-size="100%,200px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="book-open" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Document</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">SGRSW Document Download</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">Version 4.0, September 2024. Available from the Transport Resources website under Guidelines, or as a direct PDF download.</p>
+            <span style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="primary" icon-right="download" href="https://resource.capetown.gov.za/documentcentre/Documents/Procedures%2c%20guidelines%20and%20regulations/Standards_Guidelines_RSW.pdf" hint-size="auto,40px">Download PDF</x-import>
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="external-link" href="https://www.capetown.gov.za/Family%20and%20home/City-publications/publications-and-reports/transport" hint-size="auto,40px">Transport Resources site</x-import>
+            </span>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,200px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="layers" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Collaboration</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">SGRSW SharePoint site</h2>
+            <p style="margin: var(--space-2) 0 var(--space-4); font: var(--type-body-sm);">New users must register an Extranet account first, then email the Standards and Guidelines office to request access.</p>
+            <p style="margin: 0 0 var(--space-5); font: var(--type-caption); color: var(--text-muted);">Extranet registration: <a href="https://web1.capetown.gov.za/web1/registration">web1.capetown.gov.za/web1/registration</a> · Access requests: <a href="mailto:StandardsGuidelines.RSW@capetown.gov.za">StandardsGuidelines.RSW@capetown.gov.za</a></p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="external-link" href="https://cityofcapetowngov.sharepoint.com/sites/team-SGRSD" hint-size="auto,40px">Open SharePoint site</x-import>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,200px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="ruler" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Bulk download</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Book of Drawings</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">All Part B standard detail drawings as a single download.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="download" disabled="{{ true }}" hint-size="auto,40px">Download — link pending</x-import>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,200px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="file-text" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Bulk download</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Change logs</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">Record of changes between revisions. ZIP archive.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="download" href="https://resource.capetown.gov.za/cityassets/Media%20Centre%20Assets/SGRSW_ChangeLogs.zip" hint-size="auto,40px">Download ZIP</x-import>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,200px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="map" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Bulk download</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Maps</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">All Part C reference maps. ZIP archive.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="download" href="https://resource.capetown.gov.za/cityassets/Media%20Centre%20Assets/SGRSW_Maps.zip" hint-size="auto,40px">Download ZIP</x-import>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,200px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="layers" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Bulk download</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Annexures</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">All Part D annexures. ZIP archive.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="download" href="https://resource.capetown.gov.za/cityassets/Media%20Centre%20Assets/SGRSW_Annexures.zip" hint-size="auto,40px">Download ZIP</x-import>
+          </x-import>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isDrawings }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="Drawing Library">
+        <div style="border-top: var(--border-width-rule) solid var(--rule-heading); padding-top: var(--space-6); max-width: var(--measure-body);">
+          <p style="margin: 0; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-clause);">Tab 03 · Part B, Book of Drawings</p>
+          <h1 style="margin: var(--space-2) 0 0; font: var(--type-h1); letter-spacing: var(--tracking-wide); color: var(--text-heading);">Drawing Library</h1>
+          <p style="margin: var(--stack-paragraph) 0 0;">This page provides links to download the various detail drawings (PDF format). Drawings are grouped by discipline; the group filter and search narrow the list below.</p>
+          <p style="margin: var(--stack-paragraph) 0 0;">The Book of Drawings may also be downloaded as a whole. Refer to <a href="#downloads">Downloads</a>.</p>
+        </div>
+
+        <div style="margin-top: var(--space-8); display: flex; flex-wrap: wrap; gap: var(--space-3);">
+          <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="{{ g.variant }}" onClick="{{ g.select }}" hint-size="auto,38px">
+              {{ g.label }}
+              <span style="font: var(--type-mono-sm); opacity: 0.72; margin-left: var(--space-1);">{{ g.count }}</span>
+            </x-import>
+          </sc-for>
+        </div>
+
+        <div style="margin-top: var(--space-5); max-width: 300px;">
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.FormField" label="Search drawings" html-for="drawing-search" hint-size="100%,64px">
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Input" id="drawing-search" placeholder="e.g. kerb, SD-104" value="{{ query }}" onChange="{{ setQuery }}" hint-size="100%,38px"></x-import>
+          </x-import>
+        </div>
+
+        <p style="margin: var(--space-5) 0 0; font: var(--type-mono-sm); color: var(--text-clause);">{{ countLine }}</p>
+
+        <div style="margin-top: var(--space-4); border-top: var(--border-width-hairline) solid var(--border-default);">
+          <div style="display: grid; grid-template-columns: 120px 1fr 180px 70px 120px; gap: var(--space-4); padding: var(--pad-cell-y) 0; background: var(--surface-inverse); border-bottom: var(--border-width-hairline) solid var(--border-default);">
+            <span style="padding-left: var(--pad-cell-x); font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse);">Number</span>
+            <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse);">Title</span>
+            <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse);">Group</span>
+            <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse);">Rev</span>
+            <span style="padding-right: var(--pad-cell-x); text-align: right; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse);">File</span>
+          </div>
+          <sc-for list="{{ visibleDrawings }}" as="row" hint-placeholder-count="6">
+            <div style="display: grid; grid-template-columns: 120px 1fr 180px 70px 120px; gap: var(--space-4); align-items: center; padding: var(--space-3) 0; border-bottom: var(--border-width-hairline) solid var(--border-hairline);" style-hover="background: var(--surface-accent-soft);">
+              <span style="padding-left: var(--pad-cell-x); font: var(--type-mono); color: var(--text-clause);">{{ row.number }}</span>
+              <span style="font: var(--type-body-sm); color: var(--ink-900);">{{ row.title }}</span>
+              <span style="font: var(--type-caption); color: var(--text-body);">{{ row.group }}</span>
+              <span style="font: var(--type-mono-sm); color: var(--text-body);">{{ row.revision }}</span>
+              <span style="padding-right: var(--pad-cell-x); display: flex; justify-content: flex-end;">
+                <sc-if value="{{ row.released }}" hint-placeholder-val="{{ true }}">
+                  <a href="{{ row.href }}" target="_blank" style="font: var(--type-body-sm); display: inline-flex; align-items: center; gap: var(--space-2);">
+                    <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="download" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+                    {{ row.file }}
+                  </a>
+                </sc-if>
+                <sc-if value="{{ row.pending }}" hint-placeholder-val="{{ false }}">
+                  <span style="font: var(--type-caption); color: var(--text-muted);">Pending</span>
+                </sc-if>
+              </span>
+            </div>
+          </sc-for>
+          <sc-if value="{{ noDrawingResults }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0; padding: var(--space-6) var(--pad-cell-x); font: var(--type-body-sm); color: var(--text-muted);">No drawings match these filters.</p>
+          </sc-if>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isMaps }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="Maps Library">
+        <div style="border-top: var(--border-width-rule) solid var(--rule-heading); padding-top: var(--space-6); max-width: var(--measure-body);">
+          <p style="margin: 0; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-clause);">Tab 04 · Part C, Maps</p>
+          <h1 style="margin: var(--space-2) 0 0; font: var(--type-h1); letter-spacing: var(--tracking-wide); color: var(--text-heading);">Maps Library</h1>
+          <p style="margin: var(--stack-paragraph) 0 0;">This page provides links to download the various reference maps (PDF format).</p>
+        </div>
+
+        <div style="margin-top: var(--space-10); border-top: var(--border-width-hairline) solid var(--border-default);">
+          <div style="display: grid; grid-template-columns: 120px 1fr 90px 150px; gap: var(--space-4); padding: var(--pad-cell-y) 0; background: var(--surface-accent-soft); border-bottom: var(--border-width-hairline) solid var(--border-default);">
+            <span style="padding-left: var(--pad-cell-x); font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-heading);">Map</span>
+            <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-heading);">Title</span>
+            <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-heading);">Revision</span>
+            <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-heading);">File</span>
+          </div>
+          <sc-for list="{{ maps }}" as="row" hint-placeholder-count="2">
+            <div style="display: grid; grid-template-columns: 120px 1fr 90px 150px; gap: var(--space-4); align-items: center; padding: var(--space-3) 0; border-bottom: var(--border-width-hairline) solid var(--border-hairline);" style-hover="background: var(--surface-accent-soft);">
+              <span style="padding-left: var(--pad-cell-x); font: var(--type-mono); color: var(--text-clause);">{{ row.number }}</span>
+              <span style="font: var(--type-body-sm); color: var(--ink-900);">{{ row.title }}</span>
+              <span style="font: var(--type-mono-sm); color: var(--text-body);">{{ row.revision }}</span>
+              <a href="{{ row.href }}" target="_blank" style="font: var(--type-body-sm); display: inline-flex; align-items: center; gap: var(--space-2);">
+                <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="download" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+                {{ row.file }}
+              </a>
+            </div>
+          </sc-for>
+          <div style="padding: var(--space-5) var(--pad-cell-x); border: var(--border-width-hairline) dashed var(--border-default); border-top: none; background: var(--surface-page);">
+            <p style="margin: 0; font: var(--type-body-sm); color: var(--text-muted);">Further reference maps are pending release. The complete set is also available as a bulk ZIP download under Downloads.</p>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isAsBuilt }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="As-built Requirements">
+        <div style="border-top: var(--border-width-rule) solid var(--rule-heading); padding-top: var(--space-6); max-width: var(--measure-body);">
+          <p style="margin: 0; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-clause);">Tab 05 · SGRSW As-Built Protocol</p>
+          <h1 style="margin: var(--space-2) 0 0; font: var(--type-h1); letter-spacing: var(--tracking-wide); color: var(--text-heading);">As-built Requirements</h1>
+          <p style="margin: var(--stack-paragraph) 0 0;">Protocols relating to as-built and close-out requirements by Roads Infrastructure Management, Urban Mobility Directorate.</p>
+          <p style="margin: var(--stack-paragraph) 0 0;">The following provides an overview of the standard as-built and close-out requirements. Section 19.2 of the Standards and Guidelines for Roads &amp; Stormwater shall be consulted for comprehensive requirements.</p>
+        </div>
+
+        <div style="margin-top: var(--space-6); max-width: var(--measure-body);">
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Callout" tone="requirement" hint-size="100%,120px">As-built and close-out information shall be submitted to the relevant RIM District on completion of the contract. The information and documents shall be provided via email or an accessible online platform. The following will be required:</x-import>
+        </div>
+
+        <div style="margin-top: var(--space-10); max-width: 900px; border-top: var(--border-width-hairline) solid var(--border-hairline);">
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle1 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon1 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">1</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">Comms</span>
+            </button>
+            <sc-if value="{{ open1 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <p style="margin: 0;">Communication/Correspondence relating to any design or material changes (supported by RIM) during construction.</p>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle2 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon2 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">2</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">Inspection Form</span>
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Badge" tone="neutral" uppercase="{{ false }}" hint-size="auto,20px">RSW-D3-IF-01</x-import>
+            </button>
+            <sc-if value="{{ open2 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <p style="margin: 0;">Submitted for all inspections conducted, i.e. intermediate, completion and final (after the 12-month DLP).</p>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle3 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon3 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">3A</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">As-Built Data — Drawings and GIS Data</span>
+            </button>
+            <sc-if value="{{ open3 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <ul style="margin: 0; padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2);">
+                  <li>As-Built drawings/data shall be provided via email or an accessible online platform. Hard copies shall be submitted only upon request;</li>
+                  <li>Provide separate drawings for each service: roads (incl. sections &amp; pavement design), stormwater, road signs and markings, combined services;</li>
+                  <li>Clearly mark drawing status as “AS-BUILT”; use revision “Z1” for the first submission and “Z2”, “Z3”, etc. for subsequent submissions;</li>
+                  <li>Indicate service ownership (i.e. “Municipal” or “Private”), incl. the extent;</li>
+                  <li>Drawing formats: PDF, DWG (WGS84 co-ordinate system; no XREFs), TIFF;</li>
+                  <li>Drawings drawn BY LAYER (and not BY COLOR). Use descriptive layer names;</li>
+                  <li>Include a legend &amp; table containing a co-ordinate list (Label, X, Y) of all stormwater infrastructure (manholes, catchpits, headwalls, sub-surface drain rodding eyes, etc.), with invert &amp; cover levels. Submit as Excel file as well;</li>
+                  <li>New infrastructure to be indicated as “new” (not “proposed”);</li>
+                  <li>Spatial: ESRI File Geodatabase or Shape files (*.shp);</li>
+                  <li>Attributes to include pipe diameters, length, capacity, material, feature id, feature name, etc.;</li>
+                  <li>Survey and LandXML (if requested).</li>
+                </ul>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle4 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon4 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">3B</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">As-Built Data — Asset Register</span>
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Badge" tone="neutral" uppercase="{{ false }}" hint-size="auto,20px">Annexure A</x-import>
+            </button>
+            <sc-if value="{{ open4 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <ul style="margin: 0; padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2);">
+                  <li>Only populate infrastructure (assets) the City will take ownership of;</li>
+                  <li>Submit in MS Excel format.</li>
+                </ul>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle5 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon5 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">3C</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">As-Built Data — Material Test Results</span>
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Badge" tone="neutral" uppercase="{{ false }}" hint-size="auto,20px">TMH10</x-import>
+            </button>
+            <sc-if value="{{ open5 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <ul style="margin: 0; padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2);">
+                  <li>Include a Material Test Result Summary report of the conducted tests and corresponding results. Refer to example template;</li>
+                  <li>As-built materials records shall be submitted in accordance with TMH10. The submission shall include the prescribed TMH10 as-built records, together with relevant design documentation (including standard cross-sections, pavement designs and approved mix designs), a register of conditionally accepted and rejected work, and any other information required by the Approval Authority. The Approval Authority shall confirm the required as-built sheets and submission requirements prior to report production.</li>
+                </ul>
+                <p style="margin: var(--stack-paragraph) 0 0; font: var(--type-caption); color: var(--text-muted);">Templates: TMH10 · Material Test Result Summary</p>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle6 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon6 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">3D</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">As-Built Data — CCTV Footage of the stormwater conduits</span>
+            </button>
+            <sc-if value="{{ open6 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <ul style="margin: 0; padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2);">
+                  <li>Video footage and PDF reports;</li>
+                  <li>Confirmation of Review Letter from the Consulting Engineer.</li>
+                </ul>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle7 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon7 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">3E</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">As-Built Data — Structural Assets in the Road Reserve</span>
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Badge" tone="neutral" uppercase="{{ false }}" hint-size="auto,20px">TMH19</x-import>
+            </button>
+            <sc-if value="{{ open7 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <p style="margin: 0;">Shall include as-built drawings of all structures within the road reserve, incl. inventory and condition inspection data in accordance with TMH19 (completed by a COTO-registered Bridge Inspector), any required fully signed bridge agreements &amp; supporting documentation (Asset Register, Asset Handover Cert).</p>
+                <p style="margin: var(--stack-paragraph) 0 0; font: var(--type-caption); color: var(--text-muted);">Templates: Annexure A · RSW-D3-HC-02 · TMH19</p>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle8 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon8 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">3F</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">As-Built Data — Photo Report</span>
+            </button>
+            <sc-if value="{{ open8 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <p style="margin: 0;">Provide a photo report of new infrastructure (if required).</p>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle9 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon9 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">3G</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">As-Built Data — Stormwater Deliverables</span>
+            </button>
+            <sc-if value="{{ open9 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <p style="margin: 0;">Stormwater deliverables as required by CSRM (if applicable).</p>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle10 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon10 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">4</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">Certificates</span>
+            </button>
+            <sc-if value="{{ open10 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <p style="margin: 0;">Practical Completion, Completion and Final Approval certificates (signed).</p>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="border-bottom: var(--border-width-hairline) solid var(--border-hairline);">
+            <button type="button" onClick="{{ toggle11 }}" style="display: flex; align-items: center; gap: var(--space-3); width: 100%; padding: var(--space-4) 0; background: none; border: none; cursor: pointer; text-align: left;">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="{{ icon11 }}" size="{{ 15 }}" hint-size="15px,15px" style="color: var(--text-clause);"></x-import>
+              <span style="font: var(--type-mono-sm); color: var(--text-clause);">5</span>
+              <span style="flex: 1; font: var(--type-h4); color: var(--text-heading);">Asset Handover Certificate</span>
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Badge" tone="neutral" uppercase="{{ false }}" hint-size="auto,20px">RSW-D3-HC-02</x-import>
+            </button>
+            <sc-if value="{{ open11 }}" hint-placeholder-val="{{ true }}">
+              <div style="padding: 0 0 var(--space-5) 30px; font: var(--type-body-sm); max-width: var(--measure-body);">
+                <ul style="margin: 0; padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2);">
+                  <li>Only required for new municipal infrastructure (not private infrastructure);</li>
+                  <li>Where new municipal infrastructure includes structures (e.g. retaining walls, bridges), a separate Asset Handover Certificate shall be completed therefor.</li>
+                </ul>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <div style="margin-top: var(--space-10); max-width: 560px;">
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,140px">
+            <h2 style="margin: 0; font: var(--type-h2); color: var(--text-heading);">As-Built Protocol</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">The as-built annexure carries the Asset Register and Asset Handover Certificate templates. The download link is pending.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="primary" icon-right="download" disabled="{{ true }}" hint-size="auto,40px">Download annexure — link pending</x-import>
+          </x-import>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Contact">
+        <div style="border-top: var(--border-width-rule) solid var(--rule-heading); padding-top: var(--space-6); max-width: var(--measure-body);">
+          <p style="margin: 0; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-clause);">Tab 06</p>
+          <h1 style="margin: var(--space-2) 0 0; font: var(--type-h1); letter-spacing: var(--tracking-wide); color: var(--text-heading);">Contact</h1>
+          <p style="margin: var(--stack-paragraph) 0 0;">Comments, enquiries, requests and feedback on the SGRSW shall be directed to the Standards and Guidelines office. As-built and close-out submissions shall be directed to the relevant RIM District.</p>
+        </div>
+
+        <div style="margin-top: var(--space-10); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5);">
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="raised" accent="{{ true }}" hint-size="100%,220px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="book-open" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Standards and Guidelines office</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Document enquiries</h2>
+            <p style="margin: var(--space-2) 0 var(--space-4); font: var(--type-body-sm);">Comments on the document, requests for clarification, SharePoint access requests and notification of errors.</p>
+            <p style="margin: 0 0 var(--space-2); font: var(--type-mono);"><a href="mailto:StandardsGuidelines.RSW@capetown.gov.za">StandardsGuidelines.RSW@capetown.gov.za</a></p>
+            <p style="margin: 0; font: var(--type-body-sm); color: var(--text-body);">Grant Coetzee · Daneel du Toit</p>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,220px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="map" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Roads Infrastructure Management</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">RIM Districts</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">District areas and the contact person for each district are carried on the RIM Districts Map. Refer to Part C.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="download" href="assets/maps/RIM-districts-map-rev0.pdf" hint-size="auto,40px">RIM Districts Map (Rev 0)</x-import>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,220px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="external-link" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Directorate</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Urban Mobility</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">The SGRSW is published by the City of Cape Town: Urban Mobility Directorate.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="external-link" href="https://www.capetown.gov.za/urbanmobility" hint-size="auto,40px">capetown.gov.za/urbanmobility</x-import>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,220px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="info" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">Notifications</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Subscribe for updates</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">Register to be notified when a new revision of the SGRSW is issued.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="external-link" href="https://cityofcapetown.everlytic.net/public/forms/h/IfZQ692lhyAycBCc/Mjc2MzlkNzU1MDkyZTBlOTk1MDU4ODIxOTkwNDZhZWZkNDAxNjkyMA" hint-size="auto,40px">Subscribe</x-import>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,220px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="book-open" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">City publications</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">Transport Resources</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">Transport publications and reports, including the guidelines under which the SGRSW is published.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="external-link" href="https://www.capetown.gov.za/Family%20and%20home/City-publications/publications-and-reports/transport" hint-size="auto,40px">Open Transport Resources</x-import>
+          </x-import>
+
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Card" tone="cream" hint-size="100%,220px" style="height: 100%;">
+            <span style="display: flex; align-items: center; gap: var(--space-2); color: var(--text-clause);">
+              <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Icon" name="scale" size="{{ 18 }}" hint-size="18px,18px"></x-import>
+              <span style="font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps);">City council</span>
+            </span>
+            <h2 style="margin: var(--space-3) 0 0; font: var(--type-h2); color: var(--text-heading);">City Policies and Bylaws</h2>
+            <p style="margin: var(--space-2) 0 var(--space-5); font: var(--type-body-sm);">Policies, by-laws and publications of the City of Cape Town.</p>
+            <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Button" variant="secondary" icon-right="external-link" href="https://www.capetown.gov.za/Family%20and%20home/Meet-the-City/city-council/policies-by-laws-and-publications" hint-size="auto,40px">Open policies and by-laws</x-import>
+          </x-import>
+        </div>
+
+        <div style="margin-top: var(--space-10); max-width: var(--measure-body);">
+          <x-import component-from-global-scope="SGRSWDesignSystem_1b8ebd.Callout" tone="note" hint-size="100%,100px">As-built and close-out information shall be submitted to the relevant RIM District, not to the Standards and Guidelines office. Refer to the As-built Requirements tab.</x-import>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <footer style="background: var(--surface-inverse); color: var(--text-inverse); margin-top: auto;">
+    <div style="max-width: 1120px; margin: 0 auto; padding: var(--space-10) var(--gutter-page); display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-8);">
+      <div>
+        <p style="margin: 0; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse-muted);">Published by</p>
+        <p style="margin: var(--space-2) 0 0; font: var(--type-body-sm); color: var(--text-inverse);">City of Cape Town: Urban Mobility Directorate. Compiled by Roads Infrastructure Management and Transport Infrastructure Implementation.</p>
+      </div>
+      <div>
+        <p style="margin: 0; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse-muted);">Enquiries</p>
+        <p style="margin: var(--space-2) 0 0; font: var(--type-mono-sm); color: var(--text-inverse);"><a href="mailto:StandardsGuidelines.RSW@capetown.gov.za" style="color: var(--text-inverse);">StandardsGuidelines.RSW@capetown.gov.za</a></p>
+        <p style="margin: var(--space-2) 0 0; font: var(--type-body-sm); color: var(--text-inverse-muted);"><a href="https://www.capetown.gov.za/urbanmobility" style="color: var(--text-inverse);">www.capetown.gov.za/urbanmobility</a></p>
+      </div>
+      <div>
+        <p style="margin: 0; font: var(--type-eyebrow); text-transform: uppercase; letter-spacing: var(--tracking-caps); color: var(--text-inverse-muted);">Current revision</p>
+        <p style="margin: var(--space-2) 0 0; font: var(--type-mono-sm); color: var(--text-inverse);">Version 4.0 · September 2024</p>
+        <p style="margin: var(--space-2) 0 0; font: var(--type-caption); color: var(--text-inverse-muted);">It is the responsibility of the designers to confirm that they are utilising the latest available version of this document.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;documentVersion&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Version 4.0&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;issueDate&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;September 2024&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const TABS = [
+  { id: 'home', label: 'Home', icon: 'book-open' },
+  { id: 'downloads', label: 'Downloads', icon: 'download' },
+  { id: 'drawings', label: 'Drawing Library', icon: 'ruler' },
+  { id: 'maps-library', label: 'Maps Library', icon: 'map' },
+  { id: 'as-built', label: 'As-built Requirements', icon: 'gavel' },
+  { id: 'contact', label: 'Contact', icon: 'file-text' }
+];
+
+const GROUPS = [
+  { id: 'all', label: 'All groups', count: 160 },
+  { id: 'Roads', label: 'Roads', count: 58 },
+  { id: 'Road Markings and Signs', label: 'Road Markings and Signs', count: 31 },
+  { id: 'Stormwater', label: 'Stormwater', count: 46 },
+  { id: 'General', label: 'General', count: 25 }
+];
+
+const DRAWINGS = [
+  { number: 'RD1.1', title: 'BK Kerbs & C1 Channels', group: 'Roads', revision: 'Rev C', href: 'assets/drawings/RD1.1-BK-kerbs-C1-channels-revC.pdf', file: 'PDF · A4', released: true },
+  { number: 'RD1.2', title: 'Kerb Transitions and Terminations', group: 'Roads' },
+  { number: 'RD2.1', title: 'Typical Cross Section — Class 4 Road', group: 'Roads' },
+  { number: 'RD2.2', title: 'Typical Cross Section — Class 5 Road', group: 'Roads' },
+  { number: 'RD3.1', title: 'Carriageway Crossing — Residential', group: 'Roads' },
+  { number: 'RD4.1', title: 'Traffic Calming — Speed Hump Details', group: 'Roads' },
+  { number: 'RM1.1', title: 'Road Marking Details — Longitudinal Lines', group: 'Road Markings and Signs' },
+  { number: 'RM1.2', title: 'Road Marking Details — Symbols and Arrows', group: 'Road Markings and Signs' },
+  { number: 'RM2.1', title: 'Sign Post Foundation Details', group: 'Road Markings and Signs' },
+  { number: 'RM2.2', title: 'Sign Mounting Heights and Clearances', group: 'Road Markings and Signs' },
+  { number: 'RM3.1', title: 'Pedestrian Crossing Layout and Markings', group: 'Road Markings and Signs' },
+  { number: 'RM4.1', title: 'Traffic Signal Pole and Kiosk Details', group: 'Road Markings and Signs' },
+  { number: 'SW1.1', title: 'Manhole Details — Type 1', group: 'Stormwater' },
+  { number: 'SW1.2', title: 'Manhole Details — Type 2', group: 'Stormwater' },
+  { number: 'SW2.1', title: 'Kerb Inlet Catchpit', group: 'Stormwater' },
+  { number: 'SW2.2', title: 'Grid Inlet Catchpit', group: 'Stormwater' },
+  { number: 'SW3.1', title: 'Pipe Bedding Classes and Backfill', group: 'Stormwater' },
+  { number: 'SW4.1', title: 'Headwall and Outlet Structure', group: 'Stormwater' },
+  { number: 'SW5.1', title: 'Sub-surface Drain and Rodding Eye', group: 'Stormwater' },
+  { number: 'GN1.1', title: 'Trench Reinstatement in Road Reserve', group: 'General' },
+  { number: 'GN1.2', title: 'Service Duct Crossing Details', group: 'General' },
+  { number: 'GN2.1', title: 'Retaining Wall — Standard Details', group: 'General' },
+  { number: 'GN3.1', title: 'Boundary Wall and Fence Positions', group: 'General' },
+  { number: 'GN4.1', title: 'Benchmark and Survey Beacon Protection', group: 'General' }
+];
+
+class Component extends DCLogic {
+  state = { tab: 'home', open: { 1: true }, group: 'all', query: '' };
+
+  componentDidMount() {
+    this.sync = () => {
+      const id = (location.hash || '').replace(/^#/, '');
+      if (TABS.some((t) => t.id === id)) this.setState({ tab: id });
+      else this.setState({ tab: 'home' });
+    };
+    this.sync();
+    window.addEventListener('hashchange', this.sync);
+  }
+
+  componentWillUnmount() {
+    if (this.sync) window.removeEventListener('hashchange', this.sync);
+  }
+
+  renderVals() {
+    const v = {};
+    for (let i = 1; i <= 11; i++) {
+      const on = !!this.state.open[i];
+      v['open' + i] = on;
+      v['icon' + i] = on ? 'minus' : 'plus';
+      v['toggle' + i] = () => this.setState((s) => ({ open: Object.assign({}, s.open, { [i]: !s.open[i] }) }));
+    }
+    const q = this.state.query.trim().toLowerCase();
+    const scope = this.state.group === 'all' ? 'all groups' : this.state.group;
+    const visible = DRAWINGS.filter((d) => {
+      if (this.state.group !== 'all' && d.group !== this.state.group) return false;
+      if (!q) return true;
+      return (d.number + ' ' + d.title + ' ' + d.group).toLowerCase().includes(q);
+    });
+    const version = this.props.documentVersion ?? 'Version 4.0';
+    const issued = this.props.issueDate ?? 'September 2024';
+    return Object.assign(v, {
+      tab: this.state.tab,
+      tabItems: TABS.map((t) => ({
+        id: t.id,
+        label: t.label,
+        icon: t.icon,
+        select: () => { location.hash = '#' + t.id; this.setState({ tab: t.id }); },
+        style: {
+          display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)',
+          padding: '13px 0', background: 'none', border: 'none',
+          borderBottom: '2px solid ' + (this.state.tab === t.id ? 'var(--gold-500)' : 'transparent'),
+          font: 'var(--weight-medium) var(--text-sm)/1 var(--font-display)',
+          letterSpacing: 'var(--tracking-wide)',
+          color: this.state.tab === t.id ? 'var(--cream-50)' : 'var(--teal-100)',
+          cursor: 'pointer', transition: 'var(--transition-control)'
+        }
+      })),
+      setTab: (id) => { location.hash = '#' + id; this.setState({ tab: id }); },
+      isHome: this.state.tab === 'home',
+      isDownloads: this.state.tab === 'downloads',
+      isDrawings: this.state.tab === 'drawings',
+      isMaps: this.state.tab === 'maps-library',
+      isAsBuilt: this.state.tab === 'as-built',
+      isContact: this.state.tab === 'contact',
+      homeMeta: [
+        { label: 'Latest version', value: version, mono: true },
+        { label: 'Issue date', value: issued, mono: true },
+        { label: 'Approval Authority', value: 'Director: Roads Infrastructure Management' },
+        { label: 'Parts', value: 'A Content · B Drawings · C Maps · D Annexures' }
+      ],
+      groups: GROUPS.map((g) => ({
+        id: g.id,
+        label: g.label,
+        count: g.count,
+        variant: this.state.group === g.id ? 'primary' : 'secondary',
+        select: () => this.setState({ group: g.id })
+      })),
+      query: this.state.query,
+      setQuery: (e) => this.setState({ query: e.target.value }),
+      visibleDrawings: visible.map((d) => ({
+        number: d.number,
+        title: d.title,
+        group: d.group,
+        revision: d.revision ? d.revision.replace(/^Rev\s*/, '') : '—',
+        file: d.file || '',
+        href: d.href || '#',
+        released: !!d.released,
+        pending: !d.released
+      })),
+      noDrawingResults: visible.length === 0,
+      countLine: q
+        ? 'Showing ' + visible.length + ' of ' + DRAWINGS.length + ' placeholder sheets · ' + scope
+        : 'Showing ' + visible.length + ' placeholder sheets — ' + scope + ' · ~160 drawings expected in total',
+      maps: [
+        { number: 'Part C', title: 'RIM Districts Map', revision: 'Rev 0', href: 'assets/maps/RIM-districts-map-rev0.pdf', file: 'PDF · A4' }
+      ]
+    });
+  }
+}
+</script>
+</body>
+</html>

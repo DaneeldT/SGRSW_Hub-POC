@@ -1,0 +1,21 @@
+# Working files kept offline - not part of the deployable page
+uploads/
+asbuilt.txt
+.thumbnail
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+~$*
+*.tmp
+*.bak
+*.log
+
+# Tooling
+node_modules/
+.env
+.env.*

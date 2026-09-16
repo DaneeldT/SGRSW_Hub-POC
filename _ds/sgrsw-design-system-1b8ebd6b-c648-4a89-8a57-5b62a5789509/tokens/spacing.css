@@ -1,0 +1,25 @@
+:root{
+  --space-0:0; --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px;
+  --space-12:48px; --space-16:64px; --space-20:80px; --space-24:96px;
+
+  /* semantic */
+  --gutter-page:32px;
+  --gutter-page-wide:64px;
+  --stack-paragraph:14px;
+  --stack-clause:28px;
+  --stack-section:48px;
+  --pad-card:20px;
+  --pad-card-tight:14px;
+  --pad-control-x:16px;
+  --pad-control-y:9px;
+  --pad-cell-x:14px;
+  --pad-cell-y:10px;
+
+  /* layout */
+  --sidebar-width:288px;
+  --toc-width:236px;
+  --header-height:60px;
+  --content-max:1320px;
+  --page-width:794px; /* A4 @96dpi */
+}
